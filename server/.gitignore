@@ -1,0 +1,9 @@
+# Virtual environment
+venv/
+
+# Temporary files
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.idea/
