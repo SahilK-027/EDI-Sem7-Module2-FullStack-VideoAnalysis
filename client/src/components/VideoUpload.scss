@@ -1,0 +1,228 @@
+/* VideoUpload.css */
+.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: inset 0 0 0 99px #121316, inset 0 0 0 100px rgba(128, 0, 255, 0.2), inset 0 0 0 199px #121316, inset 0 0 0 200px rgba(128, 0, 255, 0.2), inset 0 0 0 299px #121316, inset 0 0 0 300px rgba(123, 0, 255, 0.2);
+  border-radius: 50%;
+  transform: rotate(0deg);
+  overflow: hidden;
+  max-width: 800px;
+  height: 800px;
+  border: 1px solid rgb(100, 51, 153);
+  z-index: -1;
+}
+
+.panel .scanner {
+  -webkit-animation: scanning 6s infinite linear;
+  animation: scanning 6s infinite linear;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjEuMCIgeDI9IjEuMCIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZmYwMCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: linear-gradient(to top right, #6f00ff 0%, rgba(0, 0, 0, 0) 50%);
+  transform-origin: top left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-left: 1px solid rgba(123, 0, 255, 0.1);
+}
+
+.panel:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: rgba(102, 0, 255, 0.2);
+}
+
+.panel:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(123, 0, 255, 0.2);
+}
+
+.panel .something {
+  list-style: none;
+}
+
+.panel .something li {
+  -webkit-animation: target 6s infinite linear;
+  animation: target 6s infinite linear;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #7444ff;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #7444ff;
+}
+
+.panel .something li:nth-child(1) {
+  -webkit-animation-delay: 2250ms;
+  animation-delay: 2250ms;
+  top: 30%;
+  left: 30%;
+}
+
+.panel .something li:nth-child(2) {
+  -webkit-animation-delay: 3200ms;
+  animation-delay: 3200ms;
+  top: 15%;
+  left: 60%;
+}
+
+.panel .something li:nth-child(3) {
+  -webkit-animation-delay: 5050ms;
+  animation-delay: 5050ms;
+  top: 70%;
+  left: 80%;
+}
+
+.panel .something li:nth-child(4) {
+  -webkit-animation-delay: 1100ms;
+  animation-delay: 1100ms;
+  top: 60%;
+  left: 20%;
+}
+
+.panel .something li:nth-child(5) {
+  -webkit-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+  top: 30%;
+  left: 50%;
+}
+
+@-webkit-keyframes scanning {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scanning {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes target {
+  1% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5;
+    transform: scale(2.5);
+  }
+
+  3% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    transform: scale(1.5);
+  }
+
+  60% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes target {
+  1% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5;
+    transform: scale(2.5);
+  }
+
+  3% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    transform: scale(1.5);
+  }
+
+  60% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drop-zone:hover {
+  background-color: #3b3b3b85;
+}
+
+/* VideoUpload.css */
+
+.progress-container {
+  width: 100%;
+  border-radius: 4px;
+  padding: 2px;
+  margin-top: 20px;
+}
+
+.progress-out {
+  width: 80%;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: #7444ff;
+  /* Green progress bar color */
+  border-radius: 4px;
+  text-align: center;
+  color: #000;
+  transition: width 0.3s ease-in-out;
+}
+
+.estimated-time {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #fff;
+  /* White text color */
+  text-align: center;
+}
+
+.stop {
+  color: #fff;
+  /* White text color */
+  background: #ff2b1c;
+  /* Red background color */
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.stop:hover {
+  background: #e6170a;
+  /* Darker red background color on hover */
+}
+
+
+.fa-cloud-arrow-up {
+  font-size: 50px;
+  color: #c598ff;
+}
