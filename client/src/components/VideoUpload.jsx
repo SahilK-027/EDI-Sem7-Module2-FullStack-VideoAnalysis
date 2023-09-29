@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './VideoUpload.scss'
@@ -52,12 +53,10 @@ function VideoUpload() {
     };
   }, []);  // Empty dependency array ensures the effect runs only once
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
 
   const handleAnalyze = async () => {
-    if (selectedFile === null) {
+    console.log(selectedFile)
+    if (!selectedFile) {
       toast.error('Please Select a file', {
         position: "top-center",
         autoClose: 4000,
@@ -77,17 +76,14 @@ function VideoUpload() {
     formData.append('video', selectedFile);
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/analyze', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
+      const response = await axios.post('http://127.0.0.1:5000/analyze', formData);
+      const data = response.data;
+      console.log(response)
       setResult(data);
     } catch (error) {
       console.error('Error:', error);
     } finally {
-      setIsLoading(false); // Stop loading animation
+      setIsLoading(false); 
     }
   };
 
@@ -103,14 +99,14 @@ function VideoUpload() {
       theme: "dark",
     });
     try {
-      const response = await fetch('http://127.0.0.1:5000/stop');
-      const data = await response.json();
+      const response = await axios.get('http://127.0.0.1:5000/stop');
+      const data = response.data;
       console.log(data);
     } catch (error) {
       console.error('Error:', error);
     }
   };
-  const onDrop = (acceptedFiles) => {  
+  const onDrop = (acceptedFiles) => {
     if (!acceptedFiles[0].type.startsWith("video/")) {
       toast.error('Please Upload Video File', {
         position: "top-center",
@@ -168,9 +164,9 @@ function VideoUpload() {
       </div>
       {isLoading ? (
         <>
-          <div class="panel">
-            <div class="scanner"></div>
-            <ul class="something">
+          <div className="panel">
+            <div className="scanner"></div>
+            <ul className="something">
               <li></li>
               <li></li>
               <li></li>

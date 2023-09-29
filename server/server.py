@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 from pathlib import Path
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, emit
 import cv2
 import time
@@ -9,8 +9,16 @@ import math
 import json
 
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")  # Adjust origins for production
+socketio = SocketIO(app, cors_allowed_origins="*") 
+CORS(app, resources={r"/socket.io/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+
+@app.route("/")
+@cross_origin()
+def helloWorld():
+  return "Hello, cross-origin-world!"
+ # Adjust origins for production
 
 @socketio.on('connect')
 def handle_connect():
